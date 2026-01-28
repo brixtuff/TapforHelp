@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>NFC ResQ-WA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 { font-size: 22px; }
+    button {
+      width: 100%;
+      padding: 16px;
+      margin: 10px 0;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .accident { background: #dc2626; }
+    .fire { background: #f97316; }
+    .crime { background: #2563eb; }
+  </style>
+</head>
+<body>
+
+<h1>🚨 NFC RESQ-WA 🚨</h1>
+<p>Pilih kondisi darurat:</p>
+
+<button class="accident" onclick="sendWA('kecelakaan')">
+🚑 Kecelakaan
+</button>
+
+<button class="fire" onclick="sendWA('kebakaran')">
+🔥 Kebakaran
+</button>
+
+<button class="crime" onclick="sendWA('kejahatan')">
+🚓 Kejahatan
+</button>
+
+<script>
+function sendWA(type) {
+  if (!navigator.geolocation) {
+    alert("GPS tidak didukung");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(function(position) {
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+    const maps = `https://maps.google.com/?q=${lat},${lng}`;
+
+    let nomor = "";
+    let pesan = "";
+
+    if (type === "kecelakaan") {
+      nomor = "628XXXXXXXXX"; // keluarga / relawan
+      pesan = `🚑 LAPORAN KECELAKAAN\n\n📍 Lokasi:\n${maps}\n\nMohon bantuan segera.\nSumber: NFC ResQ-WA`;
+    }
+
+    if (type === "kebakaran") {
+      nomor = "628XXXXXXXXX"; // DAMKAR
+      pesan = `🔥 LAPORAN KEBAKARAN\n\n📍 Lokasi:\n${maps}\n\nTerlihat kebakaran di jalan.\nMohon respon cepat.`;
+    }
+
+    if (type === "kejahatan") {
+      nomor = "628XXXXXXXXX"; // RT / Polisi / Relawan
+      pesan = `🚓 LAPORAN KEJAHATAN\n\n📍 Lokasi:\n${maps}\n\nDiduga terjadi tindak kriminal.\nMohon bantuan.`;
+    }
+
+    const url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
+    window.location.href = url;
+  });
+}
+</script>
+
+</body>
+</html>
