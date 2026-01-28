@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>NFC ResQ-WA</title>
+  <title>BATIK PKL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -29,7 +29,7 @@
 </head>
 <body>
 
-<h1>🚨 NFC RESQ-WA 🚨</h1>
+<h1>🚨 BATIK PKL 🚨</h1>
 <p>Pilih kondisi darurat:</p>
 
 <button class="accident" onclick="sendWA('kecelakaan')">
@@ -60,17 +60,17 @@ function sendWA(type) {
     let pesan = "";
 
     if (type === "kecelakaan") {
-      nomor = "628XXXXXXXXX"; // keluarga / relawan
+      nomor = "6285725927054"; // keluarga / relawan
       pesan = `🚑 LAPORAN KECELAKAAN\n\n📍 Lokasi:\n${maps}\n\nMohon bantuan segera.\nSumber: NFC ResQ-WA`;
     }
 
     if (type === "kebakaran") {
-      nomor = "628XXXXXXXXX"; // DAMKAR
-      pesan = `🔥 LAPORAN KEBAKARAN\n\n📍 Lokasi:\n${maps}\n\nTerlihat kebakaran di jalan.\nMohon respon cepat.`;
+      nomor = "6285725927054"; // DAMKAR
+      pesan = `🔥 LAPORAN KEBAKARAN\n\n📍 Lokasi:\n${maps}\n\nTerjadi KEBAKARAN disini\nMohon respon cepat.`;
     }
 
     if (type === "kejahatan") {
-      nomor = "628XXXXXXXXX"; // RT / Polisi / Relawan
+      nomor = "6285725927054"; // RT / Polisi / Relawan
       pesan = `🚓 LAPORAN KEJAHATAN\n\n📍 Lokasi:\n${maps}\n\nDiduga terjadi tindak kriminal.\nMohon bantuan.`;
     }
 
